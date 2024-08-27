@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Message</h1>
+<div mat-dialog-content>
+  <p *ngIf="isSuccess">{{ successMessage }}</p>
+  <p *ngIf="!isSuccess">{{ errorMessage }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true">OK</button>
+</div>
+

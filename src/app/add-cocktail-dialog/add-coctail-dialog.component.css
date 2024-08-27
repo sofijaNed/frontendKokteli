@@ -1,0 +1,102 @@
+.dialog-content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex !important;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  p {
+    color: #666;
+  }
+
+  /* Stil za zaTebelu div */
+.zaTebelu {
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  margin-bottom: 20px; 
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px; 
+}
+/* Stil za grid-item div */
+.grid-item {
+  margin-bottom: 10px; /* Dodajemo razmak ispod svake stavke */
+}
+
+/* Stil za button */
+.grid-item button {
+  padding: 8px 16px; /* Dodajemo prostor unutar dugmeta */
+  background-color: #007bff; /* Boja pozadine dugmeta */
+  color: #fff; /* Boja teksta na dugmetu */
+  border: none; /* Uklanjamo ivice dugmeta */
+  cursor: pointer; /* Promena kursora prilikom prelaska preko dugmeta */
+}
+
+/* Stil za button prilikom prelaska preko njega */
+.grid-item button:hover {
+  background-color: #0056b3; /* Promena boje pozadine prilikom prelaska preko dugmeta */
+}
+
+.container {
+  padding: 20px;
+}
+
+mat-divider {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.grid-item {
+  margin-bottom: 10px;
+}
+
+/* .zaTebelu {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+} */
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.footer .grid-item {
+  margin-left: 10px;
+}
+
+.mat-dialog-container {
+  display: flex !important; /* Omogućava scroll unutar dijaloga */
+  flex-direction: column;
+}
+
+.mat-dialog-content {
+  flex: 1; /* Omogućava sadržaju da raste unutar dijaloga */
+  overflow-y: auto; /* Omogućava scroll samo po y-osi */
+}
+
+.mat-dialog-container .mat-dialog-content {
+  max-height: 80vh; /* Ograničava visinu dijaloga na 80% visine ekrana */
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+
+

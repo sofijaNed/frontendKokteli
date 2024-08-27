@@ -1,0 +1,216 @@
+<h1 mat-dialog-title>Kreiraj koktel</h1>
+<mat-divider></mat-divider>
+
+<div class="content">
+  
+  <div class="grid-item">
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>Naziv koktela</mat-label>
+      <input matInput [(ngModel)]="cocktail.cocktailName" />
+    </mat-form-field>
+  </div>
+  
+  <div class="grid-item">
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>Tip koktela</mat-label>
+      <mat-select [(ngModel)]="cocktail.type">
+        <mat-option value="SUV">SUV</mat-option>
+        <mat-option value="SLADAK">SLADAK</mat-option>
+        <mat-option value="POLUSLADAK">POLUSLADAK</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- <mat-form-field class="grid-item">
+    <mat-label>Odaberite sliku</mat-label>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*">
+  </mat-form-field> -->
+  
+
+  <!-- <mat-form-field subscriptSizing="dynamic" class="grid-item">
+    <mat-label>Sastojak</mat-label>
+    <input matInput [(ngModel)]="cocktail." />
+  </mat-form-field> -->
+
+  <!-- <mat-form-field subscriptSizing="dynamic" class="grid-item">
+    <mat-label>Kolicina</mat-label>
+    <input matInput [(ngModel)]="employee.lastName" />
+  </mat-form-field> -->
+
+  <!-- <mat-form-field subscriptSizing="dynamic" class="grid-item">
+    <mat-label>Jedinica mere</mat-label>
+    <input matInput [(ngModel)]="employee.lastName" />
+  </mat-form-field> -->
+
+  <mat-form-field subscriptSizing="dynamic" class="grid-item">
+    <mat-label>Opis nacina pripreme:</mat-label>
+    <input matInput [(ngModel)]="cocktail.preparation" />
+  </mat-form-field>
+
+  <!-- <mat-form-field subscriptSizing="dynamic" class="grid-item">
+    <mat-label>Opis nacina pripreme:</mat-label>
+    <input matInput [(ngModel)]="cocktail.preparation" />
+  </mat-form-field> -->
+
+  <mat-form-field subscriptSizing="dynamic" class="grid-item">
+    <mat-label>Casa:</mat-label>
+    <mat-select [(ngModel)]="cocktail!.glassDTO">
+      <mat-option *ngFor="let glass of glasses" [value]="glass">{{glass.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field subscriptSizing="dynamic" class="grid-item">
+    <mat-label>URL slike:</mat-label>
+    <input matInput [(ngModel)]="cocktail.picture" />
+  </mat-form-field>
+  
+
+
+</div>
+
+
+<div class="zaTebelu">
+  <div class="grid-container">
+    <div class="grid-item">
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Sastojak:</mat-label>
+        <input matInput [(ngModel)]="recipeItem.ingredientDTO.name" />
+      </mat-form-field>
+    </div>
+
+    <div class="grid-item">
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Količina:</mat-label>
+        <input matInput [(ngModel)]="recipeItem.quantity" />
+      </mat-form-field>
+    </div>
+    
+
+    <div class="grid-item">
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Jedinica mere:</mat-label>
+        <mat-select [(ngModel)]="recipeItem!.measureDTO">
+          <mat-option *ngFor="let measure of unitOfMeasures" [value]="measure">{{measure.measure}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>  
+  <div class="grid-item">
+      <button type="button" (click)="saveRecipeItem()">Sačuvaj sastojak</button>
+  </div>
+ 
+</div>
+
+
+<!-- <div class="table" >
+  <table mat-table #recipeItemTable [dataSource]="dataSource" class="mat-elevation-z8">
+
+   
+
+    <ng-container matColumnDef="sastojak">
+      <th mat-header-cell *matHeaderCellDef> Sastojak </th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <mat-form-field *ngIf="i == 0" subscriptSizing="dynamic" class="grid-item table-input">
+          <input matInput [(ngModel)]="ingredient.name" />
+        </mat-form-field>
+
+        <ng-container *ngIf="i != 0">
+          {{element}}
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="kolicina">
+      <th mat-header-cell *matHeaderCellDef> Kolicina </th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <mat-form-field *ngIf="i == 0" subscriptSizing="dynamic" class="grid-item table-input">
+          <input matInput [(ngModel)]="recipeItem.quantity" />
+        </mat-form-field>
+
+        <ng-container *ngIf="i != 0">
+          {{element}}
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="jedinicaMere">
+      <th mat-header-cell *matHeaderCellDef> Jedinica mere </th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <mat-form-field *ngIf="i == 0" subscriptSizing="dynamic" class="grid-item table-input">
+          <mat-select [(ngModel)]="recipeItem.measureDTO">
+            <mat-option *ngFor="let measure of unitOfMeasures" [value]="measure">{{measure.measure}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <ng-container *ngIf="i != 0">
+          {{element.name}}
+        </ng-container>
+      </td>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="tableActions">
+      <th mat-header-cell *matHeaderCellDef> Dodaj red</th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <div class="action-buttons">
+          <button *ngIf="i == 0" (click)="addRow()" [disabled]="!ingredient.name || !recipeItem.quantity || !recipeItem.measureDTO" mat-fab color="primary">
+            Dodaj
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div> -->
+
+<div class="tabela-container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Definicija kolona -->
+    <ng-container matColumnDef="sastojak">
+      <th mat-header-cell *matHeaderCellDef> Sastojak </th>
+      <td mat-cell *matCellDef="let element"> {{element.ingredientDTO.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="kolicina">
+      <th mat-header-cell *matHeaderCellDef> Količina </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="jedinicaMere">
+      <th mat-header-cell *matHeaderCellDef> Jedinica mere </th>
+      <td mat-cell *matCellDef="let element"> {{element.measureDTO.measure}} </td>
+    </ng-container>
+
+    
+    <!-- <ng-container matColumnDef="akcije">
+      <th mat-header-cell *matHeaderCellDef> Akcije </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="removeRecipeItem(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container> -->
+
+    <!-- Definicija redova -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-actions class="footer">
+  <!-- <button mat-raised-button [mat-dialog-close]="false">Cancel</button> -->
+  <div class="grid-item">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Odustani</button>
+  </div>
+  <div class="grid-item">
+    <button mat-raised-button type="button" (click)="confirm()" cdkFocusInitial>Sačuvaj koktel</button>
+  </div>
+  <!-- <button mat-raised-button color="primary" (click)="confirm()" cdkFocusInitial>Confirm</button> -->
+</div>
+
+
+

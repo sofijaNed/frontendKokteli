@@ -1,0 +1,50 @@
+<div class = "opis">
+    <p>
+        Pretražite koktele, pogledajte postojeće i dodajte svoje nove recepte!
+    </p>
+</div>
+<app-search></app-search>
+<app-tags></app-tags>
+
+<!-- <button type="button" (click)="applyFilter()">Filter</button>
+<div *ngFor="let ingredient of ingredients">
+    <label>
+      <input type="checkbox" [value]="ingredient.name" [checked] = "isSelected(ingredient.name)" (change)="toggleIngredient(ingredient.name)">
+      {{ ingredient.name }}
+    </label>
+</div> -->
+
+<div class="container">
+  <button type="button" (click)="applyFilter()">Filtriraj</button>
+  <div class="filters">
+      <div *ngFor="let ingredient of ingredients" class="checkbox-label">
+          <label>
+              <input type="checkbox" [value]="ingredient.name" [checked]="isSelected(ingredient.name)" (change)="toggleIngredient(ingredient.name)">
+              {{ ingredient.name }}
+          </label>
+      </div>
+  </div>
+</div>
+
+<button class = "addCocktail" (click)="openAddCocktailDialog()">Dodaj koktel</button>
+<div class="table-container">
+<table class= "tabela">
+    <tr>
+    <th>Naziv koktela</th>
+    <th>Kategorija</th>
+    <th>Slika case</th>
+    </tr>
+
+    <tr *ngFor = "let cocktail of cocktails" (click)="openCocktailDetails(cocktail)">
+         <!-- <a routerLink = "/cocktail/{{cocktail.cocktailName}}">  -->
+            <td>{{cocktail.cocktailName}}</td>
+            <td>{{cocktail.type}}</td>
+            <td><img [src]="(cocktail.glassDTO.picture)" alt="Opis slike"></td>
+            <!-- <td><a [routerLink]="['/cocktail/', cocktail.cocktailName]">{{ cocktail.cocktailName }}</a></td> -->
+         <!-- </a>  -->
+    </tr>    
+    <!-- let i = index" (click)="selectRow(i)" -->
+</table>
+</div>
+
+

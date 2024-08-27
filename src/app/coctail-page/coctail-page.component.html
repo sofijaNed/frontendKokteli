@@ -1,0 +1,36 @@
+
+<div *ngIf="cocktail" class="container">
+    <img [src]="cocktail.picture" [alt]="cocktail.cocktailName" />
+
+    <div class="details">
+        <div class="header">
+            <span class="name">
+                {{cocktail.cocktailName}}
+            </span>
+        </div>
+         
+
+        <!-- <div class="tags">
+            <app-tags [cocktailPageTags]="cocktail.type.toString()" justifyContent="start"></app-tags>
+        </div> -->
+
+        <div class="recipe">
+            <span>
+                {{cocktail.preparation}}
+            </span>
+        </div>
+
+        <div class="sastojci">
+            <p>
+               Sastojci i njihov odnos: 
+            </p>
+            <div *ngFor="let recipeItem of cocktail.recipeItems">
+                <div>
+                    <p>{{ recipeItem.ingredientDTO.name }}: {{ recipeItem.quantity }} {{ recipeItem.measureDTO.measure }}</p>
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+</div>
